@@ -1,5 +1,5 @@
 <?php
-	$list = "list.json";
+	$list = "https://raw.githubusercontent.com/psz2007/random-pic/main/list.json";
 	if(!file_exists($list)){
 		die('list error');
 	}
