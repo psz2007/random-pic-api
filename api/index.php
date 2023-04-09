@@ -1,10 +1,18 @@
 <?php
-	$list = "https://raw.githubusercontent.com/psz2007/random-pic/main/list.json";
-	if(!file_exists($list)){
-		die('list error');
+	try {
+		$curl = curl_init();
+		$url = "https://raw.githubusercontent.com/psz2007/random-pic/main/list.json";
+		curl_setopt($curl, CURLOPT_URL, $url);
+		$file = curl_exec($curl);
+		if($e = curl_error($curl)) {
+			die($e);
+		} else {
+			$pics = json_decode($file, true);
+			var_dump($pics);
+		}
+	} catch (Exception $e) {
+		die($e);
 	}
-	$file = file_get_contents($list);
-	$pics = json_decode($file);
 	$pic = 'https://raw.githubusercontent.com/psz2007/random-pic/main/' . $pics[array_rand($pics)];
 	die(header('Location: $pic'));
 ?>
