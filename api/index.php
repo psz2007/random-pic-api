@@ -7,12 +7,11 @@
 		if($e = curl_error($curl)) {
 			die($e);
 		} else {
-			$pics = json_decode($file, true);
-			var_dump($pics);
+			$pics = json_decode($file);
 		}
+		$pic = 'https://raw.githubusercontent.com/psz2007/random-pic/main/' . $pics[array_rand($pics)];
+		die(header('Location: $pic'));
 	} catch (Exception $e) {
 		die($e);
 	}
-	$pic = 'https://raw.githubusercontent.com/psz2007/random-pic/main/' . $pics[array_rand($pics)];
-	die(header('Location: $pic'));
 ?>
