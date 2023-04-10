@@ -1,13 +1,13 @@
 <?php
 	try {
-		$curl = curl_init();
+		$ch = curl_init();
 		$url = "https://raw.githubusercontent.com/psz2007/random-pic/main/list.json";
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$file = curl_exec($curl);
-		if($e = curl_error($curl)) {
+		$file = curl_exec($ch);
+		if($e = curl_error($ch)) {
 			die($e);
 		} else {
 			$pics = json_decode($file);
