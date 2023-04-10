@@ -13,7 +13,7 @@
 			$pics = json_decode($file);
 		}
 		$pic = 'https://raw.githubusercontent.com/psz2007/random-pic/main/' . $pics[array_rand($pics)];
-		die(header('Location: $pic'));
+		die(header('Location: ' . $pic));
 	} catch (Exception $e) {
 		die($e);
 	}
